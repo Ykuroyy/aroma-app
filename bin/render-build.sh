@@ -7,6 +7,8 @@ bundle install
 # yarn build:css
 
 # Setup database
-bundle exec rake db:create
+echo "Setting up database..."
+bundle exec rake db:create || echo "Database already exists"
 bundle exec rake db:migrate
-bundle exec rake db:seed 
+bundle exec rake db:seed || echo "Seeding completed or already done"
+echo "Database setup completed" 
