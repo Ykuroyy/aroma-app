@@ -1,0 +1,34 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card botanical-detail-card">
+        <div class="card-header botanical-detail-header">
+          <h1 class="card-title mb-0 text-center text-white"><%= @aroma.name %></h1>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="alert botanical-alert">
+                <h4 class="alert-heading">キーワード</h4>
+                <p class="lead mb-0"><%= @aroma.keyword %></p>
+              </div>
+              
+              <div class="mt-4">
+                <h4>今日の運勢メッセージ</h4>
+                <div class="botanical-message">
+                  <p class="mb-0"><%= @aroma.message %></p>
+                </div>
+              </div>
+              
+              <hr>
+              
+              <div class="text-center mt-4">
+                <%= link_to "← アロマ一覧に戻る", root_path, class: "btn botanical-back-btn btn-lg" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

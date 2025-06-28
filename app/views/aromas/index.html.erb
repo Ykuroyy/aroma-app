@@ -1,0 +1,19 @@
+<div class="container mt-4">
+  <h1 class="text-center mb-5 botanical-header">アロマを選んで今日の運勢を占ってみよう</h1>
+  
+  <% if @aromas.any? %>
+    <div class="row">
+      <% @aromas.each do |aroma| %>
+        <div class="col-md-3 mb-4">
+          <div class="card botanical-card text-center h-100">
+            <div class="card-body">
+              <%= link_to aroma.name, result_aroma_path(aroma), class: "botanical-btn w-100 h-100 d-flex align-items-center justify-content-center" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-center">アロマが登録されていません。</p>
+  <% end %>
+</div>
