@@ -1,34 +1,183 @@
 <div class="container mt-4">
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <div class="card botanical-detail-card">
-        <div class="card-header botanical-detail-header">
-          <h1 class="card-title mb-0 text-center text-white"><%= @aroma.name %></h1>
+  <div class="max-w-4xl mx-auto">
+    <div class="card border-0 bg-white/80 backdrop-blur-sm shadow-2xl overflow-hidden">
+      <!-- Header -->
+      <div class="card-header text-white p-5 aroma-header-bg" data-aroma="<%= @aroma.name %>" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+        <div class="text-center">
+          <div class="d-flex align-items-center justify-content-center gap-3 mb-4">
+            <i class="fas fa-leaf text-white" style="font-size: 2rem;"></i>
+            <h1 class="fs-1 fw-bold mb-0 text-white" style="font-family: 'Playfair Display', serif; letter-spacing: 0.05em; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);"><%= @aroma.name %></h1>
+            <i class="fas fa-leaf text-white" style="font-size: 2rem;"></i>
+          </div>
         </div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="alert botanical-alert">
-                <h4 class="alert-heading">キーワード</h4>
-                <p class="lead mb-0"><%= @aroma.keyword %></p>
-              </div>
-              
-              <div class="mt-4">
-                <h4>今日の運勢メッセージ</h4>
-                <div class="botanical-message">
-                  <p class="mb-0"><%= @aroma.message %></p>
-                </div>
-              </div>
-              
-              <hr>
-              
-              <div class="text-center mt-4">
-                <%= link_to "← アロマ一覧に戻る", root_path, class: "btn botanical-back-btn btn-lg" %>
-              </div>
+      </div>
+
+      <div class="card-body p-5">
+        <div class="space-y-5">
+          <!-- Keywords Section -->
+          <div class="bg-white rounded-3xl p-4 shadow-lg border border-emerald-100">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <i class="fas fa-star text-emerald-600" style="font-size: 1.5rem;"></i>
+              <h2 class="fs-2 fw-bold text-emerald-800 mb-0" style="font-family: 'Playfair Display', serif;">キーワード</h2>
             </div>
+            <p class="fs-5 text-emerald-700 fw-medium mb-0 lh-base"><%= @aroma.keyword %></p>
+          </div>
+
+          <!-- Fortune Message Section -->
+          <div class="space-y-3">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <i class="fas fa-magic text-emerald-600" style="font-size: 1.5rem;"></i>
+              <h2 class="fs-2 fw-bold text-emerald-800 mb-0" style="font-family: 'Playfair Display', serif;">今日の運勢メッセージ</h2>
+            </div>
+
+            <div class="bg-white rounded-3xl p-4 shadow-lg border border-emerald-100">
+              <p class="fs-5 text-emerald-700 lh-base fw-light mb-0"><%= @aroma.message %></p>
+            </div>
+          </div>
+
+          <!-- Back Button -->
+          <div class="text-center">
+            <%= link_to root_path, class: "btn btn-lg px-5 py-3 rounded-pill text-white fw-medium fs-5 shadow-lg" do %>
+              <i class="fas fa-arrow-left me-2"></i>
+              アロマ一覧に戻る
+            <% end %>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Footer decoration -->
+    <div class="text-center mt-4">
+      <div class="d-flex align-items-center justify-content-center gap-2 text-emerald-600 opacity-60">
+        <i class="fas fa-leaf" style="font-size: 1.25rem;"></i>
+        <span class="fs-6 fw-light">あなたの今日が素敵な一日になりますように</span>
+        <i class="fas fa-leaf" style="font-size: 1.25rem;"></i>
+      </div>
+    </div>
   </div>
 </div>
+
+<style>
+  .space-y-5 > * + * {
+    margin-top: 3rem;
+  }
+  
+  .space-y-3 > * + * {
+    margin-top: 1rem;
+  }
+  
+  .btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border: none;
+    transition: all 0.3s ease;
+  }
+  
+  .btn:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4) !important;
+    color: white;
+  }
+  
+  .max-w-4xl {
+    max-width: 56rem;
+  }
+  
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+  
+  .shadow-2xl {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+  
+  .aroma-image-bg {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  }
+  
+  .aroma-header-bg {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  }
+  
+  /* 各アロマの画像背景色 */
+  .aroma-image-bg[data-aroma="ラベンダー"] {
+    background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+  }
+  
+  .aroma-image-bg[data-aroma="ローズマリー"] {
+    background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+  }
+  
+  .aroma-image-bg[data-aroma="ペパーミント"] {
+    background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+  }
+  
+  .aroma-image-bg[data-aroma="オレンジ・スイート"] {
+    background: linear-gradient(135deg, #f97316 0%, #eab308 100%);
+  }
+  
+  .aroma-image-bg[data-aroma="ティーツリー"] {
+    background: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+  }
+  
+  .aroma-image-bg[data-aroma="ゼラニウム"] {
+    background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+  }
+  
+  .aroma-image-bg[data-aroma="フランキンセンス"] {
+    background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+  }
+  
+  .aroma-image-bg[data-aroma="イランイラン"] {
+    background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
+  }
+  
+  .aroma-image-bg[data-aroma="レモングラス"] {
+    background: linear-gradient(135deg, #84cc16 0%, #22c55e 100%);
+  }
+  
+  .aroma-image-bg[data-aroma="サンダルウッド"] {
+    background: linear-gradient(135deg, #f59e0b 0%, #eab308 100%);
+  }
+  
+  /* 各アロマのヘッダー背景色 */
+  .aroma-header-bg[data-aroma="ラベンダー"] {
+    background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+  }
+  
+  .aroma-header-bg[data-aroma="ローズマリー"] {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  }
+  
+  .aroma-header-bg[data-aroma="ペパーミント"] {
+    background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+  }
+  
+  .aroma-header-bg[data-aroma="オレンジ・スイート"] {
+    background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+  }
+  
+  .aroma-header-bg[data-aroma="ティーツリー"] {
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  }
+  
+  .aroma-header-bg[data-aroma="ゼラニウム"] {
+    background: linear-gradient(135deg, #db2777 0%, #be185d 100%);
+  }
+  
+  .aroma-header-bg[data-aroma="フランキンセンス"] {
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  }
+  
+  .aroma-header-bg[data-aroma="イランイラン"] {
+    background: linear-gradient(135deg, #db2777 0%, #a855f7 100%);
+  }
+  
+  .aroma-header-bg[data-aroma="レモングラス"] {
+    background: linear-gradient(135deg, #65a30d 0%, #4d7c0f 100%);
+  }
+  
+  .aroma-header-bg[data-aroma="サンダルウッド"] {
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  }
+</style>
